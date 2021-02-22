@@ -29,14 +29,15 @@ RUN Rscript /tmp/install.R && \
 COPY fg_config/shiny-server.conf /etc/shiny-server/
 COPY fg_config/run-shiny.sh /usr/bin
 # Allow permissions for FASTGenomics config
-RUN chown -R shiny:shiny /etc/shiny-server/shiny-server.conf
+RUN chown -R shiny:shiny /etc/shiny-server/
 RUN chown -R shiny:shiny /usr/bin/run-shiny.sh
 RUN chmod u+rwx /usr/bin/run-shiny.sh
 #
 # Copy APP data
-COPY APP/ /srv/shiny-server/
+COPY APP/ /app/
 # Allow permissions for APP data
-RUN chown -R shiny:shiny /srv/shiny-server
+RUN chown -R shiny:shiny /app/
+ENV SHINY_LOG_LEVEL=TRACE
 ############################################################
 
 
