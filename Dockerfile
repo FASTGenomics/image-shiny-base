@@ -37,7 +37,6 @@ RUN chmod u+rwx /usr/bin/run-shiny.sh
 COPY APP/ /app/
 # Allow permissions for APP data
 RUN chown -R shiny:shiny /app/
-ENV SHINY_LOG_LEVEL=TRACE
 ############################################################
 
 
